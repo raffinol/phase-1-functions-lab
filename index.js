@@ -12,7 +12,6 @@ const distanceFromHqInBlocks = function (pickUpLocation){
 const distanceFromHqInFeet = function (pickUpLocation){
     return distanceFromHqInBlocks(pickUpLocation) * 264;
 }
-
 const distanceTravelledInFeet = function (start, destination){
     let distanceInFeet;
     if (start >= destination){
@@ -27,11 +26,12 @@ const distanceTravelledInFeet = function (start, destination){
 
 const calculatesFarePrice = function (start, destination){
     let fare;
-    if (distanceTravelledInFeet (start, destination) <= 400){
+    const distance = distanceTravelledInFeet(start, destination);
+    if (distance <= 400){
         return fare = 0;
-    }else if (distanceTravelledInFeet(start, destination) > 400 && distanceTravelledInFeet(start, destination) <= 2000){
-        return fare = (distanceTravelledInFeet(start, destination) - 400) * 0.02;
-    }else if (distanceTravelledInFeet(start, destination) > 2000 && distanceTravelledInFeet(start, destination) <= 2500){
+    }else if (distance > 400 && distance <= 2000){
+        return fare = (distance - 400) * 0.02;
+    }else if (distance > 2000 && distance <= 2500){
         return fare = 25;
     }else {
         return 'cannot travel that far';
